@@ -4,6 +4,7 @@ import { useApp } from '../state/AppContext'
 import type { ExperienceLevel } from '../state/types'
 import { ChevronRight, Sparkles, IndianRupee } from 'lucide-react'
 import { inr } from '../lib/format'
+import { Press } from '../components/Motion'
 
 export default function Onboarding() {
   const { onboard } = useApp()
@@ -52,8 +53,8 @@ export default function Onboarding() {
               <span className="text-gold-400">Live</span> a financial life.
             </h1>
             <p className="text-white/60 leading-relaxed mb-8">
-              Most apps teach you facts you forget. FinLife drops you into a simulated life — first
-              salary to retirement — where every lesson becomes a real decision you make. See how it
+              Most apps teach you facts you forget. FinLife drops you into a simulated life, first
+              salary to retirement, where every lesson becomes a real decision you make. See how it
               plays out by 60.
             </p>
             <label className="block text-sm font-semibold text-white/70 mb-2">What should we call you?</label>
@@ -92,7 +93,7 @@ export default function Onboarding() {
         {step === 2 && (
           <div className="animate-fade-up">
             <h2 className="text-2xl font-extrabold mb-1">How money-savvy are you?</h2>
-            <p className="text-white/50 mb-6">No judgement — this just sets your starting difficulty.</p>
+            <p className="text-white/50 mb-6">No judgement, this just sets your starting difficulty.</p>
             <div className="space-y-2.5">
               {EXPERIENCE_OPTIONS.map((o) => (
                 <button
@@ -144,7 +145,7 @@ export default function Onboarding() {
       </div>
 
       <div className="px-6 pb-8">
-        <button
+        <Press
           onClick={() => {
             if (step < 3) setStep(step + 1)
             else finish()
@@ -154,7 +155,7 @@ export default function Onboarding() {
         >
           {step === 3 ? 'Start my financial life' : 'Continue'}
           <ChevronRight size={18} />
-        </button>
+        </Press>
       </div>
     </div>
   )

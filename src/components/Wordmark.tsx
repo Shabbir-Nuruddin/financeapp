@@ -1,4 +1,4 @@
-// Small custom brand mark — a sprouting coin. Signals "designed", not stock-icon.
+// Small custom brand mark, a sprouting coin. Signals "designed", not stock-icon.
 export default function Wordmark({ size = 22, withText = true }: { size?: number; withText?: boolean }) {
   return (
     <span className="inline-flex items-center gap-2">

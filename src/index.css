@@ -38,7 +38,7 @@ body {
 }
 
 @layer components {
-  /* Card tiers — varied weight creates hierarchy instead of one flat grey */
+  /* Card tiers, varied weight creates hierarchy instead of one flat grey */
   .card {
     @apply rounded-2xl bg-white/[0.04] border border-white/10;
   }

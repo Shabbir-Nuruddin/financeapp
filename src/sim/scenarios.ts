@@ -12,7 +12,7 @@ export interface LifeEventDef {
 
 export const LIFE_EVENTS: LifeEventDef[] = [
   { id: 'bonus', title: 'Performance bonus! 🎉', detail: 'Your hard work paid off with a fat bonus.', amount: 80000, kind: 'good', minAge: 24, maxAge: 55 },
-  { id: 'promotion', title: 'Promotion 🚀', detail: 'A big role bump — and a windfall arrear.', amount: 150000, kind: 'good', minAge: 27, maxAge: 50 },
+  { id: 'promotion', title: 'Promotion 🚀', detail: 'A big role bump, and a windfall arrear.', amount: 150000, kind: 'good', minAge: 27, maxAge: 50 },
   { id: 'market-rally', title: 'Bull run 🐂', detail: 'Markets surged this year and your equity loved it.', amount: 0, kind: 'good', minAge: 24, maxAge: 60 },
   { id: 'gift', title: 'Family gift', detail: 'A generous gift from family during a festival.', amount: 50000, kind: 'good', minAge: 23, maxAge: 40 },
 

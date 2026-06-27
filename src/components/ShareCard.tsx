@@ -4,7 +4,9 @@ import type { FutureScore } from '../sim/score'
 import { makeShareImage } from '../lib/shareImage'
 import { inr } from '../lib/format'
 import { Download, Share2, RefreshCw, Check } from 'lucide-react'
+import { motion } from 'framer-motion'
 import CountUp from './CountUp'
+import { Press } from './Motion'
 
 interface Props {
   profile: Profile
@@ -23,7 +25,7 @@ export default function ShareCard({ profile, fs, onReplay }: Props) {
   }, [])
   const ringC = 2 * Math.PI * 44
 
-  const shareText = `I just played my financial life on FinLife and scored ${fs.score}/100 — "${fs.personality}" with ${inr(fs.finalNetWorth)} net worth at 60. Think you can beat me?`
+  const shareText = `I just played my financial life on FinLife and scored ${fs.score}/100, "${fs.personality}" with ${inr(fs.finalNetWorth)} net worth at 60. Think you can beat me?`
 
   const download = () => {
     const url = makeShareImage(profile, fs)
@@ -58,7 +60,11 @@ export default function ShareCard({ profile, fs, onReplay }: Props) {
   }
 
   return (
-    <div className="animate-pop">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.92, y: 14 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+    >
       {/* visual card */}
       <div className="rounded-2xl overflow-hidden border border-brand-500/30 bg-gradient-to-br from-brand-700 via-brand-900 to-ink-900 p-6 text-center relative">
         <div className="absolute -top-10 -left-10 w-48 h-48 rounded-full bg-brand-400/20 blur-3xl" />
@@ -92,17 +98,17 @@ export default function ShareCard({ profile, fs, onReplay }: Props) {
 
       {/* actions */}
       <div className="grid grid-cols-2 gap-3 mt-4">
-        <button onClick={share} className={`btn-share flex items-center justify-center gap-2 ${pulse ? 'animate-reward' : ''}`}>
+        <Press onClick={share} className={`btn-share flex items-center justify-center gap-2 ${pulse ? 'animate-reward' : ''}`}>
           {copied ? <Check size={18} /> : <Share2 size={18} />}
           {copied ? 'Copied!' : 'Share my score'}
-        </button>
-        <button onClick={download} className="btn-ghost flex items-center justify-center gap-2">
+        </Press>
+        <Press onClick={download} className="btn-ghost flex items-center justify-center gap-2">
           <Download size={18} /> Save image
-        </button>
+        </Press>
       </div>
       <button onClick={onReplay} className="w-full mt-3 flex items-center justify-center gap-2 text-white/50 text-sm py-2 hover:text-white">
         <RefreshCw size={15} /> Replay with smarter choices
       </button>
-    </div>
+    </motion.div>
   )
 }

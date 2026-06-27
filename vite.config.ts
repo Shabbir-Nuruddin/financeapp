@@ -13,6 +13,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           charts: ['recharts'],
+          motion: ['framer-motion'],
           react: ['react', 'react-dom', 'react-router-dom'],
         },
       },

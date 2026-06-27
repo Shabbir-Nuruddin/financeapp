@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 import type { ScenarioChoice } from '../state/types'
 import Icon from '../components/Icon'
+import { Press } from '../components/Motion'
 
 type Phase = 'intro' | 'concept' | 'quiz' | 'scenario' | 'done'
 
@@ -175,7 +176,7 @@ export default function Lesson() {
         {phase === 'scenario' && lesson.scenario && (
           <div className="animate-fade-up">
             <div className="pill bg-gold-500/15 text-gold-400 mb-3">
-              <TrendingUp size={14} /> Real decision — this affects your sim
+              <TrendingUp size={14} /> Real decision, this affects your sim
             </div>
             <h2 className="text-xl font-extrabold mb-2">{lesson.scenario.prompt}</h2>
             <p className="text-white/55 text-sm mb-5">{lesson.scenario.context}</p>
@@ -217,7 +218,7 @@ export default function Lesson() {
               >
                 <p className="text-sm font-medium">
                   {chosenScenario.recommended
-                    ? '✅ Smart move. Your future self thanks you — watch it compound in the simulator.'
+                    ? '✅ Smart move. Your future self thanks you, watch it compound in the simulator.'
                     : '⚠️ Locked in. You’ll feel this choice play out over the years. Learning is in the consequences.'}
                 </p>
               </div>
@@ -238,7 +239,7 @@ export default function Lesson() {
               </div>
               <div className="card p-4">
                 <p className="text-2xl font-extrabold text-gold-400">
-                  {chosenScenario ? (chosenScenario.recommended ? 'Smart' : 'Risky') : '—'}
+                  {chosenScenario ? (chosenScenario.recommended ? 'Smart' : 'Risky') : '-'}
                 </p>
                 <p className="text-xs text-white/50">Your decision</p>
               </div>
@@ -258,12 +259,12 @@ export default function Lesson() {
       {/* footer button */}
       <div className="px-5 pb-7 pt-2">
         {phase === 'intro' && (
-          <button onClick={() => setPhase('concept')} className="btn-primary w-full flex items-center justify-center gap-2">
+          <Press onClick={() => setPhase('concept')} className="btn-primary w-full flex items-center justify-center gap-2">
             Start learning <ChevronRight size={18} />
-          </button>
+          </Press>
         )}
         {phase === 'concept' && (
-          <button
+          <Press
             onClick={() => {
               if (conceptIdx < lesson.concept.length - 1) setConceptIdx(conceptIdx + 1)
               else setPhase('quiz')
@@ -271,22 +272,22 @@ export default function Lesson() {
             className="btn-primary w-full flex items-center justify-center gap-2"
           >
             {conceptIdx < lesson.concept.length - 1 ? 'Next idea' : 'Take the quiz'} <ChevronRight size={18} />
-          </button>
+          </Press>
         )}
         {phase === 'quiz' && (
-          <button onClick={nextAfterQuiz} disabled={picked === null} className="btn-primary w-full">
+          <Press onClick={nextAfterQuiz} disabled={picked === null} className="btn-primary w-full">
             {quizIdx < lesson.quiz.length - 1 ? 'Next question' : lesson.scenario ? 'Make your decision' : 'Finish lesson'}
-          </button>
+          </Press>
         )}
         {phase === 'scenario' && (
-          <button onClick={finishLesson} disabled={!chosenScenario} className="btn-primary w-full">
+          <Press onClick={finishLesson} disabled={!chosenScenario} className="btn-primary w-full">
             Finish lesson
-          </button>
+          </Press>
         )}
         {phase === 'done' && (
-          <button onClick={() => nav('/learn')} className="btn-ghost w-full">
+          <Press onClick={() => nav('/learn')} className="btn-ghost w-full">
             Back to courses
-          </button>
+          </Press>
         )}
       </div>
     </div>

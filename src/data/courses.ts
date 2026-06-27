@@ -36,7 +36,7 @@ export const COURSES: Course[] = [
     id: 'cred',
     title: 'Credit Cards & Debt Without the Trap',
     topic: 'personal-finance',
-    blurb: 'Use the bank’s money for free — or pay 42% interest. Your call.',
+    blurb: 'Use the bank’s money for free, or pay 42% interest. Your call.',
     icon: 'CreditCard',
     accent: 'amber',
     level: 'beginner',

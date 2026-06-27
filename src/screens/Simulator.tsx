@@ -10,13 +10,14 @@ import {
 } from 'lucide-react'
 import ShareCard from '../components/ShareCard'
 import CountUp from '../components/CountUp'
+import { Press } from '../components/Motion'
 
 const STAGE_LABEL: Record<string, string> = {
-  'first-job': 'First job · 23–26',
-  'settling-in': 'Settling in · 27–32',
-  family: 'Family years · 33–41',
-  'peak-earning': 'Peak earning · 42–54',
-  'pre-retirement': 'Pre-retirement · 55–60',
+  'first-job': 'First job · 23-26',
+  'settling-in': 'Settling in · 27-32',
+  family: 'Family years · 33-41',
+  'peak-earning': 'Peak earning · 42-54',
+  'pre-retirement': 'Pre-retirement · 55-60',
 }
 
 const KIND_LABEL: Record<string, string> = {
@@ -127,7 +128,7 @@ export default function Simulator() {
         >
           <BookOpen size={20} className="text-gold-400 shrink-0" />
           <div className="flex-1">
-            <p className="font-semibold text-sm">Your sim is empty — go make decisions</p>
+            <p className="font-semibold text-sm">Your sim is empty, go make decisions</p>
             <p className="text-xs text-white/50">Complete lessons to add SIPs, funds & habits to this life.</p>
           </div>
           <ChevronRight size={18} className="text-white/30" />
@@ -136,16 +137,16 @@ export default function Simulator() {
 
       {/* controls */}
       <div className="grid grid-cols-2 gap-3 mb-5">
-        <button onClick={advance} disabled={busy} className="btn-primary flex items-center justify-center gap-2">
+        <Press onClick={advance} disabled={busy} className="btn-primary flex items-center justify-center gap-2">
           <ChevronRight size={18} /> Live 1 year
-        </button>
-        <button
+        </Press>
+        <Press
           onClick={() => { setBusy(true); setTimeout(() => { simRunToEnd(); setBusy(false) }, 300) }}
           disabled={busy}
           className="btn-ghost flex items-center justify-center gap-2"
         >
           <FastForward size={18} /> To age 60
-        </button>
+        </Press>
       </div>
 
       {/* portfolio */}

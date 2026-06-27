@@ -8,7 +8,7 @@ import Markdown from '../components/Markdown'
 
 const SUGGESTIONS = [
   'What exactly is a SIP?',
-  'Old vs new tax regime — which is better for me?',
+  'Old vs new tax regime, which is better for me?',
   'How much emergency fund do I need?',
   'How do I start investing my first salary?',
   'Are credit cards worth it?',
@@ -68,7 +68,7 @@ export default function Mentor() {
           <div className="animate-fade-up pt-2">
             <div className="card p-4 mb-4">
               <p className="text-sm text-white/75 leading-relaxed">
-                Hi {state.profile?.name} 👋 I’m your finance mentor. Ask me anything — I’ll explain it
+                Hi {state.profile?.name} 👋 I’m your finance mentor. Ask me anything, I’ll explain it
                 in plain language and tailor it to your goal{state.profile ? ` of “${state.profile.goal}”` : ''}.
               </p>
             </div>

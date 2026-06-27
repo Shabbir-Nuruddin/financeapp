@@ -13,19 +13,19 @@ export const LESSONS: Lesson[] = [
     concept: [
       {
         heading: 'CTC ≠ what you get',
-        body: 'A ₹6L CTC might mean ₹42–45K in hand after PF, professional tax and TDS. Always plan around take-home, not the offer-letter number.',
+        body: 'A ₹6L CTC might mean ₹42-45K in hand after PF, professional tax and TDS. Always plan around take-home, not the offer-letter number.',
         takeaway: 'Budget on take-home pay, never on CTC.',
       },
       {
         heading: 'The 50-30-20 starting point',
         body: '50% needs (rent, food, transport), 30% wants (eating out, subscriptions), 20% to your future (savings + investing). It’s a starting frame, not a law.',
-        takeaway: 'Pay your future self first — automate the 20%.',
+        takeaway: 'Pay your future self first, automate the 20%.',
       },
     ],
     quiz: [
       {
         question: 'You get a ₹6L CTC job. Roughly what should you budget your monthly life around?',
-        options: ['₹50,000 (CTC ÷ 12)', '₹42–45K take-home', '₹60,000', 'The full CTC'],
+        options: ['₹50,000 (CTC ÷ 12)', '₹42-45K take-home', '₹60,000', 'The full CTC'],
         correctIndex: 1,
         explanation: 'Take-home after PF, taxes and deductions is what actually hits your account.',
       },
@@ -58,8 +58,8 @@ export const LESSONS: Lesson[] = [
     concept: [
       {
         heading: 'Why it comes first',
-        body: 'A job loss or medical bill forces people to sell investments at the worst time or borrow at 40%. A 3–6 month expense buffer in a liquid account prevents that.',
-        takeaway: '3–6 months of expenses, kept boring and accessible.',
+        body: 'A job loss or medical bill forces people to sell investments at the worst time or borrow at 40%. A 3-6 month expense buffer in a liquid account prevents that.',
+        takeaway: '3-6 months of expenses, kept boring and accessible.',
       },
     ],
     quiz: [
@@ -67,7 +67,7 @@ export const LESSONS: Lesson[] = [
         question: 'Where should an emergency fund live?',
         options: ['In stocks for growth', 'In a liquid fund / savings account', 'In a 5-year FD', 'In crypto'],
         correctIndex: 1,
-        explanation: 'It must be safe and instantly accessible — returns are not the point.',
+        explanation: 'It must be safe and instantly accessible, returns are not the point.',
       },
     ],
     scenario: {
@@ -98,14 +98,14 @@ export const LESSONS: Lesson[] = [
     concept: [
       {
         heading: 'The raise trap',
-        body: 'Salary goes up 30%, lifestyle goes up 35%. A bigger flat, newer phone, more swiggy. You earn more but save the same — or less.',
+        body: 'Salary goes up 30%, lifestyle goes up 35%. A bigger flat, newer phone, more swiggy. You earn more but save the same, or less.',
         takeaway: 'On every raise, invest at least half of the increase before lifestyle catches up.',
       },
     ],
     quiz: [
       {
         question: 'You get a ₹15,000/month raise. Smartest first move?',
-        options: ['Upgrade flat by ₹15K', 'Invest ₹7–10K of it, enjoy the rest', 'Buy a bike on EMI', 'Spend it all, you earned it'],
+        options: ['Upgrade flat by ₹15K', 'Invest ₹7-10K of it, enjoy the rest', 'Buy a bike on EMI', 'Spend it all, you earned it'],
         correctIndex: 1,
         explanation: 'Capturing half of every raise compounds into serious money over a career.',
       },
@@ -119,11 +119,11 @@ export const LESSONS: Lesson[] = [
     skill: 'budgeting',
     title: 'Where Did the Money Go?',
     durationMin: 4,
-    videoSummary: 'Track for 30 days and the leaks become obvious — usually food delivery and subscriptions.',
+    videoSummary: 'Track for 30 days and the leaks become obvious, usually food delivery and subscriptions.',
     concept: [
       {
         heading: 'You can’t fix what you don’t see',
-        body: 'Most overspending is invisible: ₹250 here, a ₹149 subscription there. Tracking one month surfaces ₹3–8K of painless cuts for most people.',
+        body: 'Most overspending is invisible: ₹250 here, a ₹149 subscription there. Tracking one month surfaces ₹3-8K of painless cuts for most people.',
         takeaway: 'Track everything for 30 days before judging yourself.',
       },
     ],
@@ -132,7 +132,7 @@ export const LESSONS: Lesson[] = [
         question: 'The fastest way to find spending leaks is to…',
         options: ['Guess from memory', 'Track every rupee for a month', 'Cut all fun spending', 'Ask a friend'],
         correctIndex: 1,
-        explanation: 'Real data beats guessing — small recurring charges add up fast.',
+        explanation: 'Real data beats guessing, small recurring charges add up fast.',
       },
     ],
   },
@@ -216,7 +216,7 @@ export const LESSONS: Lesson[] = [
     concept: [
       {
         heading: 'Time is the real ingredient',
-        body: 'Starting at 23 vs 33 with the same SIP can mean double the final corpus — purely because the early money compounds longer.',
+        body: 'Starting at 23 vs 33 with the same SIP can mean double the final corpus, purely because the early money compounds longer.',
         takeaway: 'The best day to start was your first salary. The second best is today.',
       },
     ],
@@ -248,7 +248,7 @@ export const LESSONS: Lesson[] = [
         question: 'Why diversify across asset types?',
         options: ['To pay more fees', 'So one crash doesn’t wipe you out', 'To guarantee returns', 'To avoid taxes'],
         correctIndex: 1,
-        explanation: 'Different assets fall at different times — the mix smooths the ride.',
+        explanation: 'Different assets fall at different times, the mix smooths the ride.',
       },
     ],
     scenario: {
@@ -281,20 +281,20 @@ export const LESSONS: Lesson[] = [
     skill: 'personal-finance',
     title: 'How Credit Cards Actually Work',
     durationMin: 4,
-    videoSummary: 'Pay in full = a free 45-day loan + rewards. Pay minimum = a 36–42% annual trap.',
+    videoSummary: 'Pay in full = a free 45-day loan + rewards. Pay minimum = a 36-42% annual trap.',
     concept: [
       {
         heading: 'The full-payment rule',
-        body: 'If you clear the full statement by the due date, you pay zero interest and keep the rewards. Pay only the “minimum due” and interest of 3–3.5% per month kicks in on everything.',
+        body: 'If you clear the full statement by the due date, you pay zero interest and keep the rewards. Pay only the “minimum due” and interest of 3-3.5% per month kicks in on everything.',
         takeaway: 'Always pay the full statement, never just the minimum.',
       },
     ],
     quiz: [
       {
         question: 'Paying only the “minimum due” on a credit card means…',
-        options: ['You’re doing great', 'Interest of ~36–42% a year starts piling up', 'You skip that month free', 'Your limit increases'],
+        options: ['You’re doing great', 'Interest of ~36-42% a year starts piling up', 'You skip that month free', 'Your limit increases'],
         correctIndex: 1,
-        explanation: 'The minimum due is a trap — interest compounds on the rest at brutal rates.',
+        explanation: 'The minimum due is a trap, interest compounds on the rest at brutal rates.',
       },
     ],
     scenario: {
@@ -351,7 +351,7 @@ export const LESSONS: Lesson[] = [
       {
         heading: 'It depends on your deductions',
         body: 'If you actually use deductions (80C investments, HRA, home loan interest), the old regime can win. If you don’t, the new regime’s lower slabs usually win. Run both numbers.',
-        takeaway: 'No universal answer — compare both for your situation.',
+        takeaway: 'No universal answer, compare both for your situation.',
       },
     ],
     quiz: [
@@ -369,7 +369,7 @@ export const LESSONS: Lesson[] = [
     skill: 'taxation',
     title: 'Section 80C: Save Tax + Invest',
     durationMin: 4,
-    videoSummary: 'Up to ₹1.5L in ELSS/PPF/EPF can cut taxable income — investing and saving tax at once.',
+    videoSummary: 'Up to ₹1.5L in ELSS/PPF/EPF can cut taxable income, investing and saving tax at once.',
     concept: [
       {
         heading: 'ELSS: the 2-in-1',
@@ -438,7 +438,7 @@ export const LESSONS: Lesson[] = [
     concept: [
       {
         heading: 'Volatility is the price of returns',
-        body: 'Equity rises over decades but falls 30–50% sometimes along the way. Those who hold (or keep buying) through crashes capture the recovery. Those who panic-sell lock in the loss.',
+        body: 'Equity rises over decades but falls 30-50% sometimes along the way. Those who hold (or keep buying) through crashes capture the recovery. Those who panic-sell lock in the loss.',
         takeaway: 'A crash is a sale, not a fire. Keep your SIP running.',
       },
     ],
@@ -463,7 +463,7 @@ export const LESSONS: Lesson[] = [
     concept: [
       {
         heading: 'Step up your SIP every year',
-        body: 'Increasing your SIP by even 10% a year (as your income grows) dramatically shortens the time to your goals — often by many years.',
+        body: 'Increasing your SIP by even 10% a year (as your income grows) dramatically shortens the time to your goals, often by many years.',
         takeaway: 'Automate, step up annually, and leave it alone.',
       },
     ],
@@ -487,7 +487,7 @@ export const LESSONS: Lesson[] = [
       {
         heading: 'Track the right number',
         body: 'Income is how fast water flows in; net worth is how full the tank is. Two people on the same salary can have wildly different net worths a decade later.',
-        takeaway: 'Grow assets, shrink liabilities — watch net worth, not just salary.',
+        takeaway: 'Grow assets, shrink liabilities, watch net worth, not just salary.',
       },
     ],
     quiz: [
