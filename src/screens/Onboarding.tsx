@@ -5,6 +5,8 @@ import type { ExperienceLevel } from '../state/types'
 import { ChevronRight, Sparkles, IndianRupee } from 'lucide-react'
 import { inr } from '../lib/format'
 import { Press } from '../components/Motion'
+import Wordmark from '../components/Wordmark'
+import Sparkline from '../components/Sparkline'
 
 export default function Onboarding() {
   const { onboard } = useApp()
@@ -43,21 +45,43 @@ export default function Onboarding() {
       <div className="flex-1 overflow-y-auto no-scrollbar px-6 pt-8 pb-6">
         {step === 0 && (
           <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-2 pill bg-brand-500/15 text-brand-300 mb-6">
-              <Sparkles size={14} /> India’s learn-by-living finance app
+            <div className="flex items-center justify-between mb-7">
+              <Wordmark size={22} />
+              <span className="pill bg-white/[0.06] text-white/55 border border-white/10">🇮🇳 Made for India</span>
             </div>
-            <h1 className="text-3xl font-extrabold leading-tight">
-              Don’t just <span className="text-brand-300">learn</span> about money.
+
+            <h1 className="text-[2.1rem] font-extrabold leading-[1.08] tracking-tight">
+              Don’t just <span className="text-brand-300">learn</span> money.
             </h1>
-            <h1 className="text-3xl font-extrabold leading-tight mb-4">
-              <span className="text-gold-400">Live</span> a financial life.
+            <h1 className="text-[2.1rem] font-extrabold leading-[1.08] tracking-tight mb-3">
+              <span className="bg-gradient-to-r from-brand-300 to-gold-400 bg-clip-text text-transparent">Live</span> it.
             </h1>
-            <p className="text-white/60 leading-relaxed mb-8">
-              Most apps teach you facts you forget. FinLife drops you into a simulated life, first
-              salary to retirement, where every lesson becomes a real decision you make. See how it
-              plays out by 60.
+            <p className="text-white/55 leading-relaxed mb-5">
+              Every lesson becomes a real money decision in a simulated life, from your first salary
+              to age 60. Watch your choices compound.
             </p>
-            <label className="block text-sm font-semibold text-white/70 mb-2">What should we call you?</label>
+
+            {/* hero preview: the financial life arc */}
+            <div className="relative rounded-3xl border border-white/10 p-4 mb-5 overflow-hidden"
+              style={{ background: 'radial-gradient(120% 120% at 90% -10%, rgba(255,176,32,0.32), transparent 55%), radial-gradient(120% 120% at -5% 120%, rgba(255,77,141,0.34), transparent 58%), linear-gradient(150deg,#2a2065,#15123a)' }}>
+              <div className="flex items-center justify-between mb-1">
+                <div>
+                  <p className="text-[11px] text-white/55">Your money story</p>
+                  <p className="font-extrabold text-lg num">₹0 <span className="text-white/40 text-sm">→</span> <span className="text-brand-300">₹9.4Cr</span></p>
+                </div>
+                <div className="text-center rounded-2xl bg-gold-500/20 border border-gold-500/30 px-3 py-1.5">
+                  <p className="text-gold-400 font-extrabold leading-none text-lg">82</p>
+                  <p className="text-[8px] text-white/60 tracking-wide">FUTURE SCORE</p>
+                </div>
+              </div>
+              <Sparkline points={[0, 4, 9, 18, 30, 55, 92, 150, 230]} className="h-12 w-full mt-1" />
+              <div className="flex justify-between text-[10px] text-white/45 mt-0.5">
+                <span>Age 23 · first job</span>
+                <span>Age 60</span>
+              </div>
+            </div>
+
+            <label className="block text-sm font-semibold text-white/70 mb-2">First, what should we call you?</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}

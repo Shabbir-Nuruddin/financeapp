@@ -90,7 +90,7 @@ export default function Lesson() {
             <h1 className="text-2xl font-extrabold mb-4 tracking-tight">{lesson.title}</h1>
             {/* Honest, interactive lesson hero (no fake video player) */}
             <div className="card-elevated aspect-[16/10] grid place-items-center relative overflow-hidden mb-4">
-              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_25%,#34d399,transparent_55%)]" />
+              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_25%,#ffb020,transparent_55%)]" />
               <span className="absolute w-28 h-28 rounded-full border border-brand-400/30 animate-ping" style={{ animationDuration: '2.6s' }} />
               <span className="absolute w-40 h-40 rounded-full border border-brand-400/15" />
               <div className="relative grid place-items-center w-20 h-20 rounded-3xl bg-gradient-to-br from-brand-400 to-brand-600 text-ink-900 shadow-card">

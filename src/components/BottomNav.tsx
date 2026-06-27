@@ -45,8 +45,8 @@ export default function BottomNav() {
                   animate={{
                     y: -16,
                     boxShadow: isActive
-                      ? '0 10px 26px -8px rgba(16,185,129,0.9), inset 0 1px 0 rgba(255,255,255,0.5)'
-                      : '0 6px 18px -10px rgba(16,185,129,0.6), inset 0 1px 0 rgba(255,255,255,0.4)',
+                      ? '0 10px 26px -8px rgba(245,158,11,0.9), inset 0 1px 0 rgba(255,255,255,0.5)'
+                      : '0 6px 18px -10px rgba(245,158,11,0.6), inset 0 1px 0 rgba(255,255,255,0.4)',
                   }}
                   transition={{ type: 'spring', stiffness: 400, damping: 22 }}
                   className="grid place-items-center w-[52px] h-[52px] rounded-2xl bg-gradient-to-br from-brand-300 to-brand-600 text-ink-900"
@@ -76,7 +76,7 @@ export default function BottomNav() {
               )}
               <motion.span
                 whileTap={{ scale: 0.82 }}
-                animate={{ scale: isActive ? 1.08 : 1, color: isActive ? '#6ee7b7' : 'rgba(255,255,255,0.45)' }}
+                animate={{ scale: isActive ? 1.08 : 1, color: isActive ? '#ffc857' : 'rgba(255,255,255,0.45)' }}
                 transition={{ type: 'spring', stiffness: 420, damping: 24 }}
                 className="relative z-10"
               >

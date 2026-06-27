@@ -66,16 +66,17 @@ export default function ShareCard({ profile, fs, onReplay }: Props) {
       transition={{ type: 'spring', stiffness: 260, damping: 22 }}
     >
       {/* visual card */}
-      <div className="rounded-2xl overflow-hidden border border-brand-500/30 bg-gradient-to-br from-brand-700 via-brand-900 to-ink-900 p-6 text-center relative">
-        <div className="absolute -top-10 -left-10 w-48 h-48 rounded-full bg-brand-400/20 blur-3xl" />
-        <p className="text-brand-200 font-bold tracking-widest text-sm relative">FINLIFE</p>
+      <div className="rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-ink-700 via-ink-900 to-ink-950 p-6 text-center relative">
+        <div className="absolute -top-12 -right-10 w-48 h-48 rounded-full bg-brand-400/25 blur-3xl" />
+        <div className="absolute -bottom-12 -left-10 w-44 h-44 rounded-full bg-gold-500/20 blur-3xl" />
+        <p className="text-brand-300 font-bold tracking-widest text-sm relative">FINLIFE</p>
         <p className="text-white/50 text-xs mb-4 relative">My financial life, played to 60</p>
 
         <div className="relative mx-auto w-36 h-36 mb-3">
           <svg viewBox="0 0 100 100" className="-rotate-90 w-full h-full">
             <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="9" />
             <circle
-              cx="50" cy="50" r="44" fill="none" stroke="#34d399" strokeWidth="9" strokeLinecap="round"
+              cx="50" cy="50" r="44" fill="none" stroke="#ffb020" strokeWidth="9" strokeLinecap="round"
               strokeDasharray={ringC}
               strokeDashoffset={revealed ? ringC * (1 - fs.score / 100) : ringC}
               style={{ transition: 'stroke-dashoffset 1s cubic-bezier(0.22,1,0.36,1)' }}

@@ -57,9 +57,9 @@ export default function Home() {
         className="block rounded-3xl p-5 mb-4 border border-white/10 shadow-card relative overflow-hidden"
         style={{
           background:
-            'radial-gradient(130% 120% at 85% -10%, rgba(110,231,183,0.28), transparent 55%),' +
-            'radial-gradient(120% 130% at 0% 120%, rgba(5,150,105,0.55), transparent 60%),' +
-            'linear-gradient(155deg, #075e49 0%, #05231a 100%)',
+            'radial-gradient(130% 120% at 88% -15%, rgba(255,176,32,0.40), transparent 52%),' +
+            'radial-gradient(130% 130% at -5% 120%, rgba(255,77,141,0.38), transparent 58%),' +
+            'linear-gradient(150deg, #2a2065 0%, #15123a 100%)',
         }}
       >
         {/* net-worth trajectory, embedded subtly into the card */}

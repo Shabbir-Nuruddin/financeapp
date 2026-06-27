@@ -13,24 +13,31 @@ export function makeShareImage(profile: Profile, fs: FutureScore): string {
 
   // background gradient
   const g = ctx.createLinearGradient(0, 0, W, H)
-  g.addColorStop(0, '#064e3b')
-  g.addColorStop(0.55, '#06231a')
-  g.addColorStop(1, '#070b14')
+  g.addColorStop(0, '#2a2065')
+  g.addColorStop(0.55, '#1a1442')
+  g.addColorStop(1, '#0e0b26')
   ctx.fillStyle = g
   ctx.fillRect(0, 0, W, H)
 
   // soft glow
   const glow = ctx.createRadialGradient(W * 0.3, H * 0.22, 50, W * 0.3, H * 0.22, 600)
-  glow.addColorStop(0, 'rgba(52,211,153,0.25)')
-  glow.addColorStop(1, 'rgba(52,211,153,0)')
+  glow.addColorStop(0, 'rgba(255,176,32,0.28)')
+  glow.addColorStop(1, 'rgba(255,176,32,0)')
   ctx.fillStyle = glow
   ctx.fillRect(0, 0, W, H)
 
   const center = W / 2
   ctx.textAlign = 'center'
 
+  // second accent glow (magenta)
+  const glow2 = ctx.createRadialGradient(W * 0.8, H * 0.85, 50, W * 0.8, H * 0.85, 620)
+  glow2.addColorStop(0, 'rgba(255,77,141,0.22)')
+  glow2.addColorStop(1, 'rgba(255,77,141,0)')
+  ctx.fillStyle = glow2
+  ctx.fillRect(0, 0, W, H)
+
   // brand
-  ctx.fillStyle = '#6ee7b7'
+  ctx.fillStyle = '#ffc857'
   ctx.font = '700 38px Inter, sans-serif'
   ctx.fillText('FINLIFE', center, 120)
   ctx.fillStyle = 'rgba(255,255,255,0.55)'
@@ -46,7 +53,7 @@ export function makeShareImage(profile: Profile, fs: FutureScore): string {
   ctx.beginPath()
   ctx.arc(cx, cy, radius, 0, Math.PI * 2)
   ctx.stroke()
-  ctx.strokeStyle = '#34d399'
+  ctx.strokeStyle = '#ffb020'
   ctx.lineCap = 'round'
   ctx.beginPath()
   ctx.arc(cx, cy, radius, -Math.PI / 2, -Math.PI / 2 + (Math.PI * 2 * fs.score) / 100)
@@ -60,7 +67,7 @@ export function makeShareImage(profile: Profile, fs: FutureScore): string {
   ctx.fillText('FUTURE SCORE', cx, cy + 100)
 
   // grade badge
-  ctx.fillStyle = '#fbbf24'
+  ctx.fillStyle = '#ff4d8d'
   ctx.font = '800 56px Inter, sans-serif'
   ctx.fillText(`Grade ${fs.grade}`, cx, 720)
 
@@ -73,7 +80,7 @@ export function makeShareImage(profile: Profile, fs: FutureScore): string {
   ctx.fillStyle = 'rgba(255,255,255,0.6)'
   ctx.font = '500 30px Inter, sans-serif'
   ctx.fillText('Net worth at 60', cx, 880)
-  ctx.fillStyle = '#6ee7b7'
+  ctx.fillStyle = '#ffc857'
   ctx.font = '800 76px Inter, sans-serif'
   ctx.fillText(inrFull(fs.finalNetWorth), cx, 950)
 
@@ -83,7 +90,7 @@ export function makeShareImage(profile: Profile, fs: FutureScore): string {
   wrap(ctx, fs.verdict, cx, 1040, 880, 46)
 
   // CTA
-  ctx.fillStyle = 'rgba(251,191,36,0.95)'
+  ctx.fillStyle = 'rgba(255,77,141,0.95)'
   ctx.font = '700 36px Inter, sans-serif'
   ctx.fillText('Think you can beat my score?', cx, 1230)
   ctx.fillStyle = 'rgba(255,255,255,0.45)'

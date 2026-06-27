@@ -7,7 +7,7 @@ interface Props {
 
 // Lightweight area sparkline for the net-worth trajectory. Degrades gracefully to a
 // flat baseline when there's only the starting point.
-export default function Sparkline({ points, className, stroke = '#a7f3d0', fill = 'rgba(167,243,208,0.18)' }: Props) {
+export default function Sparkline({ points, className, stroke = '#ffc857', fill = 'rgba(255,200,87,0.16)' }: Props) {
   const w = 100
   const h = 32
   const data = points.length >= 2 ? points : [points[0] ?? 0, points[0] ?? 0]

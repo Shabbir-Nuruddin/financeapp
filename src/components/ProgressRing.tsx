@@ -6,7 +6,7 @@ interface Props {
   color?: string
 }
 
-export default function ProgressRing({ value, size = 64, stroke = 6, children, color = '#34d399' }: Props) {
+export default function ProgressRing({ value, size = 64, stroke = 6, children, color = '#ffb020' }: Props) {
   const r = (size - stroke) / 2
   const c = 2 * Math.PI * r
   const clamped = Math.max(0, Math.min(1, value))

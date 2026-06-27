@@ -102,15 +102,15 @@ export default function Simulator() {
             <LineChart data={chartData} margin={{ top: 6, right: 8, left: 8, bottom: 0 }}>
               <defs>
                 <linearGradient id="nwLine" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#34d399" />
-                  <stop offset="100%" stopColor="#059669" />
+                  <stop offset="0%" stopColor="#ffc857" />
+                  <stop offset="100%" stopColor="#f59e0b" />
                 </linearGradient>
               </defs>
               <XAxis dataKey="age" tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} axisLine={false} tickLine={false} />
               <YAxis hide domain={['dataMin', 'dataMax']} />
               <Tooltip
-                contentStyle={{ background: '#0b1220', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, fontSize: 12 }}
-                labelStyle={{ color: '#6ee7b7' }}
+                contentStyle={{ background: '#1e1a47', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, fontSize: 12 }}
+                labelStyle={{ color: '#ffc857' }}
                 formatter={(v: number) => [inr(v), 'Net worth']}
                 labelFormatter={(l) => `Age ${l}`}
               />

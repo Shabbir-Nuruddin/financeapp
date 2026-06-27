@@ -4,29 +4,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        // India-fresh palette: deep evergreen + mint, warm gold accent
+        // Marigold & Indigo: deep indigo night, saffron/marigold primary, magenta accent.
+        // `brand` = marigold (primary). `gold` token repurposed as the magenta accent.
         brand: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
-          950: '#022c22',
+          50: '#fff8ec',
+          100: '#ffefcb',
+          200: '#ffe0a0',
+          300: '#ffc857',
+          400: '#ffb020',
+          500: '#f59e0b',
+          600: '#db8400',
+          700: '#b26a00',
+          800: '#7c4a00',
+          900: '#4d2e00',
+          950: '#2e1b00',
         },
         gold: {
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
+          400: '#ff6fa3',
+          500: '#ff4d8d',
+          600: '#e63673',
         },
         ink: {
-          900: '#0b1220',
-          800: '#141c2e',
-          700: '#1e2940',
+          950: '#0e0b26',
+          900: '#15123a',
+          800: '#211c4d',
+          700: '#2e2860',
         },
       },
       fontFamily: {
