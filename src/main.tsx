@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
 import App from './App.tsx'
 import { AppProvider } from './state/AppContext.tsx'
 import './index.css'
@@ -8,9 +9,11 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <AppProvider>
-        <App />
-      </AppProvider>
+      <MotionConfig reducedMotion="user">
+        <AppProvider>
+          <App />
+        </AppProvider>
+      </MotionConfig>
     </BrowserRouter>
   </React.StrictMode>,
 )
