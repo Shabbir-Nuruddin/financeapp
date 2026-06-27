@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { Flame, Target, ChevronRight, Play, TrendingUp, Gamepad2, Award, RotateCcw } from 'lucide-react'
+import { Flame, Target, ChevronRight, Play, TrendingUp, Award, RotateCcw } from 'lucide-react'
 import { useApp } from '../state/AppContext'
 import { overallProgress, recommendedLesson } from '../lib/selectors'
 import { netWorth, monthlySipTotal } from '../sim/engine'
@@ -10,6 +10,7 @@ import { ACHIEVEMENTS } from '../data/achievements'
 import Icon from '../components/Icon'
 import CountUp from '../components/CountUp'
 import Wordmark from '../components/Wordmark'
+import Sparkline from '../components/Sparkline'
 
 const STAGE_LABEL: Record<string, string> = {
   'first-job': 'First job',
@@ -53,23 +54,32 @@ export default function Home() {
       {/* HERO: simulated financial life */}
       <Link
         to="/simulator"
-        className="block rounded-2xl p-5 mb-4 bg-gradient-to-br from-brand-700 to-brand-900 border border-brand-500/30 shadow-card relative overflow-hidden"
+        className="block rounded-3xl p-5 mb-4 border border-white/10 shadow-card relative overflow-hidden"
+        style={{
+          background:
+            'radial-gradient(130% 120% at 85% -10%, rgba(110,231,183,0.28), transparent 55%),' +
+            'radial-gradient(120% 130% at 0% 120%, rgba(5,150,105,0.55), transparent 60%),' +
+            'linear-gradient(155deg, #075e49 0%, #05231a 100%)',
+        }}
       >
-        <div className="absolute -right-6 -top-6 opacity-10">
-          <Gamepad2 size={120} />
+        {/* net-worth trajectory, embedded subtly into the card */}
+        <Sparkline points={sim.history.map((h) => h.netWorth)} className="absolute inset-x-0 bottom-0 h-16 w-full opacity-70" />
+
+        <div className="relative flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2 text-brand-200 text-[11px] font-semibold tracking-wide">
+            <span className="w-2 h-2 rounded-full bg-brand-300 animate-pulse" /> YOUR FINANCIAL LIFE
+          </div>
+          <span className="pill bg-black/25 text-brand-100">Age {sim.age} · {sim.age < 27 ? 'First job' : STAGE_LABEL[sim.lifeStage]}</span>
         </div>
-        <div className="flex items-center gap-2 text-brand-200 text-xs font-semibold mb-1">
-          <span className="w-2 h-2 rounded-full bg-brand-300 animate-pulse" /> YOUR FINANCIAL LIFE
-        </div>
-        <div className="flex items-end justify-between">
+        <div className="relative flex items-end justify-between">
           <div>
-            <p className="text-white/60 text-sm">Net worth at age {sim.age}</p>
-            <CountUp value={nw} format={inr} className="text-3xl font-extrabold num block" />
-            <p className="text-brand-200/80 text-xs mt-1">
-              {STAGE_LABEL[sim.lifeStage]} · {inr(monthlySipTotal(sim))}/mo invested
+            <p className="text-white/55 text-sm">Net worth so far</p>
+            <CountUp value={nw} format={inr} className="text-[2rem] leading-none font-extrabold num block" />
+            <p className="text-brand-200/80 text-xs mt-1.5">
+              {monthlySipTotal(sim) > 0 ? `${inr(monthlySipTotal(sim))}/mo invested` : 'Not investing yet'} · play to grow it
             </p>
           </div>
-          <span className="pill bg-white/15 text-white">
+          <span className="pill bg-white/15 text-white shrink-0">
             Play <ChevronRight size={14} />
           </span>
         </div>
