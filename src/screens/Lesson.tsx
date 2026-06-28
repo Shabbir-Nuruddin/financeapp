@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { lessonById, lessonsForCourse } from '../data/lessons'
-import { courseById } from '../data/courses'
+import { courseById, TOPIC_LABEL } from '../data/courses'
+import SceneImage from '../components/SceneImage'
 import { useApp } from '../state/AppContext'
 import {
   X, ChevronRight, CheckCircle2, XCircle, Lightbulb, Sparkles, TrendingUp, ArrowRight,
@@ -88,14 +89,9 @@ export default function Lesson() {
           <div className="animate-fade-up">
             <p className="kicker">{course.title}</p>
             <h1 className="text-2xl font-extrabold mb-4 tracking-tight">{lesson.title}</h1>
-            {/* Honest, interactive lesson hero (no fake video player) */}
-            <div className="card-elevated aspect-[16/10] grid place-items-center relative overflow-hidden mb-4">
-              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_25%,#ffb020,transparent_55%)]" />
-              <span className="absolute w-28 h-28 rounded-full border border-brand-400/30 animate-ping" style={{ animationDuration: '2.6s' }} />
-              <span className="absolute w-40 h-40 rounded-full border border-brand-400/15" />
-              <div className="relative grid place-items-center w-20 h-20 rounded-3xl bg-gradient-to-br from-brand-400 to-brand-600 text-ink-900 shadow-card">
-                <Icon name={course.icon} size={34} />
-              </div>
+            {/* lesson hero with a real topical photo (gradient+emoji fallback) */}
+            <div className="rounded-3xl overflow-hidden border border-white/10 relative mb-4">
+              <SceneImage query={`${TOPIC_LABEL[lesson.skill]} money`} emoji="📚" className="aspect-[16/9] w-full" />
               <span className="absolute bottom-3 left-3 pill bg-black/40 text-white/80">{lesson.durationMin} min · interactive</span>
             </div>
             <div className="card p-4 flex gap-3 mb-3">
@@ -110,20 +106,20 @@ export default function Lesson() {
           </div>
         )}
 
-        {/* CONCEPT cards */}
+        {/* CONCEPT cards, simple-first: the plain takeaway leads, detail supports */}
         {phase === 'concept' && (
           <div className="animate-fade-up" key={conceptIdx}>
             <p className="text-xs text-white/40 mb-2">
-              Key idea {conceptIdx + 1} of {lesson.concept.length}
+              Idea {conceptIdx + 1} of {lesson.concept.length}
             </p>
-            <h2 className="text-xl font-extrabold mb-3">{lesson.concept[conceptIdx].heading}</h2>
-            <p className="text-white/70 leading-relaxed mb-4">{lesson.concept[conceptIdx].body}</p>
+            <h2 className="text-2xl font-extrabold tracking-tight mb-4">{lesson.concept[conceptIdx].heading}</h2>
             {lesson.concept[conceptIdx].takeaway && (
-              <div className="rounded-xl bg-brand-500/10 border border-brand-500/30 p-4 flex gap-3">
-                <Lightbulb size={18} className="text-brand-300 shrink-0 mt-0.5" />
-                <p className="text-sm text-brand-100 font-medium">{lesson.concept[conceptIdx].takeaway}</p>
+              <div className="rounded-2xl bg-brand-500/10 border border-brand-500/30 p-4 mb-4">
+                <p className="kicker flex items-center gap-1.5 mb-1.5"><Lightbulb size={13} /> In simple words</p>
+                <p className="text-lg font-bold text-brand-100 leading-snug">{lesson.concept[conceptIdx].takeaway}</p>
               </div>
             )}
+            <p className="text-white/55 text-sm leading-relaxed">{lesson.concept[conceptIdx].body}</p>
           </div>
         )}
 

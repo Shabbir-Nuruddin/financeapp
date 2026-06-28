@@ -16,8 +16,22 @@ import type {
 } from './types'
 import { loadState, saveState, clearState } from '../lib/storage'
 import { todayKey, daysBetween } from '../lib/format'
-import { createSim, applyEffect, advanceYear, runToEnd, netWorth } from '../sim/engine'
+import { createSim, applyEffect, advanceYear, runToEnd, netWorth, advanceToAge, applyShock, grantCash } from '../sim/engine'
+import { pickEligibleEvent } from '../sim/events'
 import { ACHIEVEMENTS } from '../data/achievements'
+
+type Arrival = { age: number; grant?: number; shock?: number } | null
+
+// Advance to the next decision (applying its grant/shock), or finish at 60.
+function resumeAfter(sim: import('./types').SimState, arrival: Arrival) {
+  if (arrival) {
+    let s = advanceToAge(sim, arrival.age)
+    if (arrival.grant) s = grantCash(s, arrival.grant)
+    if (typeof arrival.shock === 'number') s = applyShock(s, arrival.shock)
+    return s
+  }
+  return runToEnd(sim)
+}
 
 const emptyProgress = (): Progress => ({
   completedLessons: [],
@@ -60,6 +74,14 @@ type Action =
       skill: Topic
     }
   | { type: 'APPLY_SCENARIO'; key: string; effect: SimEffect }
+  | {
+      type: 'SIM_RESOLVE'
+      key: string
+      effect: SimEffect
+      smart: boolean
+      nextArrival: { age: number; grant?: number; shock?: number } | null
+    }
+  | { type: 'SIM_RESOLVE_EVENT'; key: string; effect: SimEffect }
   | { type: 'SIM_ADVANCE' }
   | { type: 'SIM_RUN_TO_END' }
   | { type: 'SIM_RESET' }
@@ -174,6 +196,47 @@ function reducer(state: RootState, action: Action): RootState {
       }
     }
 
+    case 'SIM_RESOLVE': {
+      if (!state.sim) return state
+      let sim = applyEffect(state.sim, action.effect, action.key)
+      sim = {
+        ...sim,
+        smartMoves: sim.smartMoves + (action.smart ? 1 : 0),
+        poorMoves: sim.poorMoves + (action.smart ? 0 : 1),
+      }
+      // ~65% of the time, a random life event interrupts before the next decision.
+      const ev = Math.random() < 0.65 ? pickEligibleEvent(sim) : null
+      if (ev) {
+        sim = { ...sim, pendingEvent: ev.id, pendingArrival: action.nextArrival }
+      } else {
+        sim = resumeAfter(sim, action.nextArrival)
+      }
+      const next = { ...state, sim }
+      return {
+        ...next,
+        progress: {
+          ...next.progress,
+          unlockedAchievements: [...next.progress.unlockedAchievements, ...unlockAchievements(next)],
+        },
+      }
+    }
+
+    case 'SIM_RESOLVE_EVENT': {
+      if (!state.sim) return state
+      let sim = applyEffect(state.sim, action.effect, action.key)
+      const arrival = sim.pendingArrival
+      sim = { ...sim, pendingEvent: null, pendingArrival: null }
+      sim = resumeAfter(sim, arrival)
+      const next = { ...state, sim }
+      return {
+        ...next,
+        progress: {
+          ...next.progress,
+          unlockedAchievements: [...next.progress.unlockedAchievements, ...unlockAchievements(next)],
+        },
+      }
+    }
+
     case 'SIM_ADVANCE': {
       if (!state.sim) return state
       const sim = advanceYear(state.sim)
@@ -236,6 +299,13 @@ interface Ctx {
     skill: Topic
   }) => void
   applyScenario: (key: string, effect: SimEffect) => void
+  simResolve: (
+    key: string,
+    effect: SimEffect,
+    smart: boolean,
+    nextArrival: { age: number; grant?: number; shock?: number } | null,
+  ) => void
+  simResolveEvent: (key: string, effect: SimEffect) => void
   simAdvance: () => void
   simRunToEnd: () => void
   simReset: () => void
@@ -269,6 +339,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       onboard: (profile) => dispatch({ type: 'ONBOARD', profile }),
       completeLesson: (a) => dispatch({ type: 'COMPLETE_LESSON', ...a }),
       applyScenario: (key, effect) => dispatch({ type: 'APPLY_SCENARIO', key, effect }),
+      simResolve: (key, effect, smart, nextArrival) => dispatch({ type: 'SIM_RESOLVE', key, effect, smart, nextArrival }),
+      simResolveEvent: (key, effect) => dispatch({ type: 'SIM_RESOLVE_EVENT', key, effect }),
       simAdvance: () => dispatch({ type: 'SIM_ADVANCE' }),
       simRunToEnd: () => dispatch({ type: 'SIM_RUN_TO_END' }),
       simReset: () => dispatch({ type: 'SIM_RESET' }),

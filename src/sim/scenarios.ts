@@ -22,5 +22,16 @@ export const LIFE_EVENTS: LifeEventDef[] = [
   { id: 'family-help', title: 'Family needed help', detail: 'You stepped up for a family expense.', amount: -60000, kind: 'bad', minAge: 25, maxAge: 55 },
   { id: 'wedding', title: 'Wedding in the family 💍', detail: 'Celebrations are joyful but not cheap.', amount: -100000, kind: 'bad', minAge: 26, maxAge: 38 },
 
-  { id: 'kid', title: 'New baby 👶', detail: 'A wonderful (and expensive) new chapter begins.', amount: -70000, kind: 'neutral', minAge: 28, maxAge: 40 },
+  { id: 'kid', title: 'New baby 👶', detail: 'A wonderful (and expensive) new chapter begins.', amount: -70000, kind: 'neutral', minAge: 29, maxAge: 41 },
+  { id: 'pet', title: 'You adopted a puppy 🐶', detail: 'All the love, plus vet bills and food.', amount: -30000, kind: 'neutral', minAge: 25, maxAge: 50 },
+  { id: 'illness', title: 'A serious illness 🤒', detail: 'A tough year health-wise, and a big hospital bill.', amount: -250000, kind: 'bad', minAge: 35, maxAge: 60, insurable: true },
+  { id: 'adopt', title: 'You adopted a child 🧒', detail: 'A beautiful decision, with real costs to plan for.', amount: -90000, kind: 'neutral', minAge: 34, maxAge: 48 },
+  { id: 'parents', title: 'Parents’ medical care 👵', detail: 'You supported your parents through a health scare.', amount: -150000, kind: 'bad', minAge: 38, maxAge: 58, insurable: true },
+  { id: 'freelance', title: 'Side hustle paid off 💻', detail: 'A freelance project brought in extra cash.', amount: 120000, kind: 'good', minAge: 25, maxAge: 50 },
+  { id: 'festival', title: 'Festival bonus 🪔', detail: 'Diwali bonus landed in your account.', amount: 40000, kind: 'good', minAge: 23, maxAge: 58 },
+  { id: 'car-repair', title: 'Car broke down 🔧', detail: 'A surprise repair bill you didn’t budget for.', amount: -55000, kind: 'bad', minAge: 30, maxAge: 58 },
+  { id: 'home-repair', title: 'Home repairs 🏚️', detail: 'Something broke and had to be fixed now.', amount: -80000, kind: 'bad', minAge: 33, maxAge: 60 },
+  { id: 'scam', title: 'Fell for a phishing scam 🎣', detail: 'A fake “bank” call cost you before you caught it.', amount: -60000, kind: 'bad', minAge: 24, maxAge: 55 },
+  { id: 'vacation', title: 'Dream vacation ✈️', detail: 'You treated yourself to a well-earned trip.', amount: -90000, kind: 'neutral', minAge: 27, maxAge: 55 },
+  { id: 'friend-wedding', title: 'Best friend’s wedding 🎊', detail: 'Travel, gifts and outfits added up.', amount: -45000, kind: 'neutral', minAge: 25, maxAge: 40 },
 ]

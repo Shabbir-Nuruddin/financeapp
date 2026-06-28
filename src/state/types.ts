@@ -121,7 +121,7 @@ export interface SimEvent {
   kind: 'good' | 'bad' | 'neutral'
 }
 
-// Effect produced by a lesson scenario choice.
+// Effect produced by a lesson scenario or simulator decision choice.
 export interface SimEffect {
   // start/boost a recurring investment
   addHolding?: Omit<Holding, 'id' | 'balance'> & { initial?: number }
@@ -129,8 +129,12 @@ export interface SimEffect {
   cashDelta?: number
   // change monthly expenses (e.g. lifestyle inflation)
   expenseDelta?: number
+  // change monthly income (e.g. side income, salary jump)
+  incomeDelta?: number
   // take on a debt
   addDebt?: Omit<Debt, 'id'>
+  // liquidate all investments to cash (panic-sell, locks in losses)
+  sellAllInvestments?: boolean
   // emergency fund flag etc.
   insured?: boolean
   emergencyFund?: number
@@ -150,6 +154,11 @@ export interface SimState {
   history: { age: number; netWorth: number }[]
   events: SimEvent[]
   appliedChoices: string[] // lessonId:choiceLabel keys already applied
+  smartMoves: number // count of sound decisions made (drives the score)
+  poorMoves: number // count of costly decisions made
+  panicSold: boolean // ever panic-sold a crash
+  pendingEvent: string | null // a random life event awaiting the player's choice
+  pendingArrival: { age: number; grant?: number; shock?: number } | null // deferred next-decision setup
   finished: boolean
 }
 
